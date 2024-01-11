@@ -1,0 +1,13 @@
+#!/bin/bash
+# keep track of network speed over time
+# author: morganism.dev
+# Fri 22 Dec 2023 14:31:27 GMT
+
+LOGDIR="/Users/morgan/data/log/speedtest"
+BASE=$(basename $0)
+LOGBASE="${LOGDIR}/${BASE}"
+
+date '+DATE: %m/%d/%y TIME:%H:%M:%S' 1>>${LOGBASE}.log 2>/dev/null
+#/usr/local/bin/speedtest --secure --simple --server 23344  1>>${LOGBASE}.log 2>>${LOGBASE}.err 
+/usr/local/bin/speedtest --secure --simple 1>>${LOGBASE}.log 2>>${LOGBASE}.err 
+echo '---' 1>>${LOGBASE}.log 2>/dev/null
