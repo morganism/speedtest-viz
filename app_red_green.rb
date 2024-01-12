@@ -130,7 +130,7 @@ __END__
 
     function drawChart() {
       var data = new google.visualization.DataTable();
-      data.addColumn('date', 'DATETIME');
+      data.addColumn('datetime', 'DATETIME');
       data.addColumn('number', 'DOWNLOADLOW');
       data.addColumn('number', 'DOWNLOADHI');
       data.addColumn('number', 'UPLOAD');
@@ -170,8 +170,8 @@ __END__
         curveType: 'function',
         legend: { position: 'bottom' },
         pointSize: 1,
-        hAxis: {title: 'Datetime 5m buckets', slantedText:true, slantedTextAngle:30, format: 'M/d/y hh:mm:ss',
-            gridlines: {count: 60}, fontSize: '4'},
+        hAxis: {title: 'Datetime 5m buckets', slantedText:true, slantedTextAngle:30, format: 'hh:mm-d/M',
+            gridlines: {count: 500}, fontSize: '4'},
         vAxis: {title: 'MBps'},
         explorer: { 
             actions: ['dragToZoom', 'rightClickToReset'],
@@ -180,12 +180,14 @@ __END__
             maxZoomIn: 4.0},
         series: {
                   0: { color: '#ff0000',
-                       lineWidth: 1,
-                       pointSize: 2 },
+                       lineWidth: 0,
+                       pointSize: 1 },
                   1: { color: '#0fff0f',
-                       lineWidth: 1,
-                       pointSize: 2 },
-                  2: { color: '#0000ff' },
+                       lineWidth: 0,
+                       pointSize: 1 },
+                  2: { color: '#0000ff',
+                       lineWidth: 0,
+                       pointSize: 1 },
                   3: { color: '#777777' }
         }
       };
