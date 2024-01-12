@@ -130,24 +130,54 @@ __END__
 
     function drawChart() {
       var data = new google.visualization.DataTable();
-      data.addColumn('string', 'DATETIME');
+      data.addColumn('date', 'DATETIME');
       data.addColumn('number', 'DOWNLOADLOW');
       data.addColumn('number', 'DOWNLOADHI');
       data.addColumn('number', 'UPLOAD');
       data.addColumn('number', 'SLA');
+
+      data.addRows([
+          <% @data.each do |row| %>
+              [
+                  new Date(
+                      <%= row['DATETIME'][4, 4] %>, // Year
+                      <%= row['DATETIME'][2, 2].to_i - 1 %>, // Month (1-indexed)
+                      <%= row['DATETIME'][0, 2] %>, // Day
+                      <%= row['DATETIME'][8, 2] %>, // Hours
+                      <%= row['DATETIME'][10, 2] %>, // Minutes
+                      <%= row['DATETIME'][12, 2] %>  // Seconds
+                  ),
+                  <%= row['DOWNLOADLOW'] %>,
+                  <%= row['DOWNLOADHI'] %>,
+                  <%= row['UPLOAD'] %>,
+                  <%= row['SLA'] %>
+              ],
+          <% end %>
+      ]);
+
+
+      /**
       data.addRows([
         <% @data.each do |row| %>
+          
           ['<%= row['DATETIME'] %>', <%= row['DOWNLOADLOW'] %>,<%= row['DOWNLOADHI'] %> ,<%= row['UPLOAD'] %>, <%= row['SLA'] %>],
         <% end %>
       ]);
+      **/
 
       var options = {
         title: 'Speedtest Data',
-        curveType: 'none',
+        curveType: 'function',
         legend: { position: 'bottom' },
         pointSize: 1,
-        hAxis: {title: 'Datetime 5m buckets'},
+        hAxis: {title: 'Datetime 5m buckets', slantedText:true, slantedTextAngle:30, format: 'M/d/y hh:mm:ss',
+            gridlines: {count: 60}, fontSize: '4'},
         vAxis: {title: 'MBps'},
+        explorer: { 
+            actions: ['dragToZoom', 'rightClickToReset'],
+            axis: 'horizontal',
+            keepInBounds: true,
+            maxZoomIn: 4.0},
         series: {
                   0: { color: '#ff0000',
                        lineWidth: 1,
@@ -159,21 +189,6 @@ __END__
                   3: { color: '#777777' }
         }
       };
-      
-      // Loop through each row to set colors based on DOWNLOAD values
-      for (var i = 0; i < data.getNumberOfRows(); i++) {
-        var downloadValue = data.getValue(i, 1);
-        var uploadValue = data.getValue(i, 2);
-      
-        // Set colors based on the condition for DOWNLOAD and UPLOAD
-        var downloadColor = downloadValue > 258 ? '#00FF00' : '#FF0000';  // Adjusted this line
-        var uploadColor = uploadValue > 258 ? '#FF0000' : '#FF0000';
-      
-        // Set the color for the data points
-        data.setRowProperty(i, 'style', 'point { stroke-color: ' + downloadColor + '; fill-color: ' + downloadColor + '; }');
-        data.setRowProperty(i, 'style', 'point { stroke-color: ' + downloadColor + '; fill-color: ' + downloadColor + '; }');
-        data.setRowProperty(i, 'style', 'point { stroke-color: ' + uploadColor + '; fill-color: ' + uploadColor + '; }');
-      }
       
       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
       chart.draw(data, options);
@@ -289,10 +304,12 @@ __END__
 <body>
   <main>
     <h1>Speedtest Data Visualization</h1>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <div class="description" id="chart_div" style="height: 500px; width: 95%"></div>
     <div id="chart_div_description">
       <span id="chart_div_description_span">
         This chart shows Speedtest results of samples taken every 5 minute. The Y-axis or height of the point indicates the value for Mbits/s at the time the sample was measured.
+        To Zoom in Left-Click and select a portion of the displayed chart along the X-Axis. To Reset .. Right-Click.
       </span>
         <ul id="chart_div_description_span_ul">
           <li>DOWNLOADLOW is in <span class="red">RED</span>. Any sample that has a value which is less than the published SLA (258 Mbits/s) is part of this series.</li>
