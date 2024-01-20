@@ -15,4 +15,8 @@
 ## Devel
 
 
+## Docker
 
+docker build --tag speedtest .
+
+docker run -p 4567:4567 speedtest
