@@ -9,13 +9,10 @@
 
 - */5 * * * * /Users/morgan/bin/speedtest.simple
 
-- */5 * * * * /Users/morgan/bin/parse.speedtest.simple_to_csv
+- */6 * * * * /Users/morgan/bin/parse.speedtest.simple_to_csv
 
 
 ## Devel
 
-* source setStartKillAliases.sh
-
-This will create 2 aliases 'starter' and 'killer' just to make it easier to do what it says
 
 
