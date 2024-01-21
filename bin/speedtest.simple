@@ -3,7 +3,7 @@
 # author: morganism.dev
 # Fri 22 Dec 2023 14:31:27 GMT
 
-LOGDIR="/Users/morgan/data/log/speedtest"
+LOGDIR="/var/data/log/speedtest"
 BASE=$(basename $0)
 LOGBASE="${LOGDIR}/${BASE}"
 
