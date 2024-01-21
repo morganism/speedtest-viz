@@ -7,20 +7,24 @@ set :bind, '0.0.0.0'
 set :port, 4567
 set :public_folder, __dir__ + '/public'
 
-# Load config values
 CONFIG_PATH = File.expand_path(File.join(__dir__, 'config.json'))
-@config = JSON.parse(File.read(CONFIG_PATH))
-
-# Replace hardcoded data file path
-@data_file_path = @config['data_file_path']
-
-# Replace hardcoded data file name
-@data_file_name = @config['data_file_name']
 
 get '/' do
+  setup_vars
   readCSV
   aggregate_stats
   erb :chart
+end
+
+def setup_vars
+  # Load config values
+  @config = JSON.parse(File.read(CONFIG_PATH))
+  
+  # Replace hardcoded data file path
+  @data_file_path = @config['data_file_path']
+  
+  # Replace hardcoded data file name
+  @data_file_name = @config['data_file_name']
 end
 
 def stddev(ary)
@@ -40,7 +44,9 @@ def stddev(ary)
 end
 
 def readCSV
-  @data = CSV.read(File.expand_path("#{@data_file_path}/#{@data_file_name}"), headers: true)
+  filename = "#{@data_file_path}/#{@data_file_name}"
+  file = File.expand_path(filename)
+  @data = CSV.read(file, headers: true)
 end
 
 def aggregate_stats
