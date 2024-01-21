@@ -31,7 +31,7 @@ def stddev(ary)
 end
 
 def readCSV
-  @data = CSV.read(File.expand_path('~/data/log/speedtest/speedtest.csv'), headers: true)
+  @data = CSV.read(File.expand_path('/var/data/log/speedtest/speedtest.csv'), headers: true)
 end
 
 def aggregate_stats
