@@ -3,16 +3,30 @@
 
 ## Considerations
 
+
 ## TL/DR
 
-- cron parser.rb to run every 5 minutes : 
+
+
+### cron speedtest  & parser to run every 5 minutes : 
+
+The following two scripts are show as crontab entries, 
+
+'speedtest.simple' runs a simple speedtest with human readable output
+
+'parse.speedtest.simple_to_csv' will take the output of the simple speedtest and creates a 'speedtest.csv' file that is read by 'app.rb' to plot data
+
 
 - */5 * * * * /Users/morgan/bin/speedtest.simple
 
 - */6 * * * * /Users/morgan/bin/parse.speedtest.simple_to_csv
 
 
-## Devel
+## Charting
+
+### Google Charts
+
+The Google Charts library is used to provide the visualisation, and abillity to zoom into a selected subsection of the chart
 
 
 ## Docker
