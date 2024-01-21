@@ -12,10 +12,10 @@ CONFIG_PATH = File.expand_path(File.join(__dir__, 'config.json'))
 @config = JSON.parse(File.read(CONFIG_PATH))
 
 # Replace hardcoded data file path
-@data_file_path = config['data_file_path']
+@data_file_path = @config['data_file_path']
 
 # Replace hardcoded data file name
-@data_file_name = config['data_file_name']
+@data_file_name = @config['data_file_name']
 
 get '/' do
   readCSV
