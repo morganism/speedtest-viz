@@ -1,0 +1,6 @@
+{
+   "data_file_path" : "/var/data/log/speedtest",
+   "data_file_name" : "speedtest.csv",
+   "data_file_simple_name" : "speedtest.simple.log",
+   "sla_key" : 258
+}
