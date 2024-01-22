@@ -84,3 +84,15 @@ docker build --tag speedtest .
 ### Run the app : note the bindmount to make '/var/data/log/speedtest' directory available to the running container
 
 docker run -p 4567:4567 --mount type=bind,source=/var/data/log/speedtest,target=/var/data/log/speedtest speedtest
+
+
+## Contributing
+
+This started as a quick knock it out and hold Virgin Media accountable for the lies they tell. They promise a lot and deliver very little.  This simple app 
+is provided to help you when dealing with your ISP or maybe you would like to be able to "see" what your bandwidth looks like.
+It's prolly full of bugs and tpyos .. or as I see it: Opportunities for improvement. ;-)
+
+If you would like to contribute, please feal free to fork this repo, make changes and submit a PR.  I'm happy to review.
+
+Still working on the concept of releases as this is more of a stream of consciousness thing. I hope this helps you in some way. morgan@morganism.dev
+
