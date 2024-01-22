@@ -381,7 +381,7 @@ __END__
             <td></td>
           </tr> 
           <tr>
-            <td>Standard Deviationve SLA count</td>
+            <td>Standard Deviation SLA count</td>
             <td></span><div class="td80percent"><%= @standard_deviation %></div></td>
             <td><span class="metric_description">The Standard Deviation of the whole set of Download times</span></td>
             <td></td>
