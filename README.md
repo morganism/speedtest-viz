@@ -41,6 +41,8 @@ The following two scripts are show as crontab entries,
 
 'parse.speedtest.simple_to_csv' will take the output of the simple speedtest and creates a 'speedtest.csv' file that is read by 'app.rb' to plot data
 
+both example scripts are in the 'bin' directory, edit them to point to your own 'bin' dir
+
 
 - */5 * * * * /Users/morgan/bin/speedtest.simple
 
