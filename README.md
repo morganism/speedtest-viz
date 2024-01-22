@@ -1,10 +1,34 @@
 # Speedtest Visualisation Utiliy
 ![Sppedtest Visualisation](https://github.com/morganism/speedtest-viz/blob/master/images/page_speedtest-viz_app_mainpage.png?raw=true)
 
-## Considerations
+## Summary
+
+Run speedtest calculations using Ookla 
 
 
 ## TL/DR
+
+## Speedtest-Viz Setup
+
+To set up and run the Speedtest-Viz app, follow these steps:
+
+1. **Operating System:** The setup script is designed to work on MacOS and Linux systems.
+
+2. **Ruby Installation:**
+   - If Ruby is not installed, the setup script will prompt you to install it.
+   - On MacOS, make sure you have [Homebrew](https://brew.sh/) installed. If not, follow the instructions on the website to install it.
+   - On Linux, the script will use `apt-get` for package management.
+
+3. **Oookla Speedtest and speedtest-cli Installation:**
+   - If Oookla Speedtest or speedtest-cli is not installed, the setup script will prompt you to install them.
+   - The script will use `brew` on MacOS and `apt-get` on Linux for installation.
+
+### Running the Setup Script
+
+Execute the following command in your terminal:
+
+```bash
+bash setup.sh
 
 
 
