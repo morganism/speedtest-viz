@@ -31,6 +31,13 @@ Execute the following command in your terminal:
 bash setup.sh
 ```
 
+### Running the Setup Crontab Script
+
+Execute the following command in your terminal:
+
+```bash
+bash setup_crontab.sh
+```
 
 
 ### cron speedtest  & parser to run every 5 minutes : 
