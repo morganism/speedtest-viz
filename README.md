@@ -29,6 +29,7 @@ Execute the following command in your terminal:
 
 ```bash
 bash setup.sh
+```
 
 
 
